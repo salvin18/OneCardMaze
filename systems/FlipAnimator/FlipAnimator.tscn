@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://df4fnx57egf18"]
+
+[ext_resource type="Script" uid="uid://dsdxj7a2ww2fm" path="res://systems/FlipAnimator/FlipAnimator.gd" id="1_3g12t"]
+[ext_resource type="ArrayMesh" uid="uid://cbrmrha5aa5be" path="res://assets/Card1Mesh.res" id="2_blfg3"]
+
+[node name="FlipAnimator" type="Node3D"]
+script = ExtResource("1_3g12t")
+
+[node name="CardRig" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7605932)
+
+[node name="CardProxyRig" type="Node3D" parent="."]
+
+[node name="Card1Mesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_blfg3")

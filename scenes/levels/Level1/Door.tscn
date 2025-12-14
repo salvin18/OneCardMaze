@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://pswjlu52l4f8"]
+
+[ext_resource type="Script" uid="uid://nboyab7um8s3" path="res://scenes/levels/Level1/Door.gd" id="1_3o25m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3o25m"]
+size = Vector3(0.27639648, 0.907, 0.25097656)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3o25m"]
+margin = 0.01
+radius = 0.2
+
+[sub_resource type="PrismMesh" id="PrismMesh_3o25m"]
+size = Vector3(0.38, 0.38, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3o25m"]
+radius = 0.2
+height = 0.4
+
+[node name="Door" type="StaticBody3D" groups=["Door"]]
+script = ExtResource("1_3o25m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42260742, 0)
+shape = SubResource("BoxShape3D_3o25m")
+
+[node name="RejectionCheck" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40338135, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RejectionCheck"]
+shape = SubResource("SphereShape3D_3o25m")
+
+[node name="DUMMY" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.41904235, 0)
+mesh = SubResource("PrismMesh_3o25m")
+
+[node name="RejectionArea" type="MeshInstance3D" parent="DUMMY"]
+mesh = SubResource("SphereMesh_3o25m")
+
+[connection signal="body_entered" from="RejectionCheck" to="." method="_on_rejection_check_body_entered"]
