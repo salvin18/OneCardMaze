@@ -1,0 +1,216 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdq20rgv380pc"]
+
+[ext_resource type="Script" uid="uid://di378r8lxq34f" path="res://scenes/levels/Level1_ConnectedNodes/Level1.gd" id="1_7w3lq"]
+[ext_resource type="PackedScene" uid="uid://bhcc5ek84k6st" path="res://systems/FlipAnimation/FlipAnimation.tscn" id="2_mtxap"]
+[ext_resource type="ArrayMesh" uid="uid://cbrmrha5aa5be" path="res://assets/Card1Mesh.res" id="2_tqoff"]
+[ext_resource type="ArrayMesh" uid="uid://bgwapk2rji6sf" path="res://assets/PlayerMesh.res" id="3_et5g2"]
+[ext_resource type="Script" uid="uid://d2xpm4kyhtgq5" path="res://scenes/levels/Level1_ConnectedNodes/MazePath.gd" id="3_tqoff"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7w3lq"]
+radius = 0.12892216
+
+[node name="Level1" type="Node3D"]
+script = ExtResource("1_7w3lq")
+
+[node name="FlipAnimation" parent="." instance=ExtResource("2_mtxap")]
+
+[node name="Card" type="Node3D" parent="."]
+
+[node name="Card1Mesh" type="MeshInstance3D" parent="Card"]
+mesh = ExtResource("2_tqoff")
+skeleton = NodePath("../..")
+
+[node name="Card1MeshProxy" type="MeshInstance3D" parent="Card"]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 5, 0, 0)
+mesh = ExtResource("2_tqoff")
+skeleton = NodePath("../..")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19049269, 0)
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="Player"]
+mesh = ExtResource("3_et5g2")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("SphereShape3D_7w3lq")
+
+[node name="MazePathFront" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12352359, 0)
+script = ExtResource("3_tqoff")
+connectionsAsStringArr = Array[String](["NextScreen2-DOWN-NextScreen3", "StartNode-LEFT-Door1", "Door1-DOWN-Junction1", "Junction1-DOWN-Rotater1", "Junction1-RIGHT-Node1", "Node1-RIGHT-Node2", "Node1-DOWN-Door2", "Door2-DOWN-Node3", "Node3-DOWN-NextScreen1"])
+rotaterNamesArr = Array[String](["Rotater1"])
+flipConfigNamesArr = Array[String](["NextScreen1-DOWN-Node1"])
+
+[node name="StartNode" type="Marker3D" parent="MazePathFront"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.039676994, 0, -0.5552999)
+
+[node name="EditorVisual-StartNode-Door12859590009" type="RayCast3D" parent="MazePathFront/StartNode"]
+target_position = Vector3(-1.3826319, 0, -0.11711156)
+
+[node name="Door1" type="Marker3D" parent="MazePathFront"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3429549, 0, -0.67241144)
+
+[node name="EditorVisual-Door1-StartNode3445953124" type="RayCast3D" parent="MazePathFront/Door1"]
+target_position = Vector3(1.3826319, 0, 0.11711156)
+
+[node name="EditorVisual-Door1-Junction14055224354" type="RayCast3D" parent="MazePathFront/Door1"]
+target_position = Vector3(0.4161502, 0, 0.64445376)
+
+[node name="Junction1" type="Marker3D" parent="MazePathFront"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92680466, 0, -0.027957678)
+
+[node name="EditorVisual-Junction1-Door13012819678" type="RayCast3D" parent="MazePathFront/Junction1"]
+target_position = Vector3(-0.4161502, 0, -0.64445376)
+
+[node name="EditorVisual-Junction1-Rotater14176061494" type="RayCast3D" parent="MazePathFront/Junction1"]
+target_position = Vector3(-0.11534226, 0, 2.1016812)
+
+[node name="EditorVisual-Junction1-Node1198332447" type="RayCast3D" parent="MazePathFront/Junction1"]
+target_position = Vector3(0.5492383, 0, 0.06958723)
+
+[node name="Rotater1" type="Marker3D" parent="MazePathFront"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0421469, 0, 2.0737236)
+
+[node name="EditorVisual-Rotater1-Junction13079504353" type="RayCast3D" parent="MazePathFront/Rotater1"]
+target_position = Vector3(0.11534226, 0, -2.1016812)
+
+[node name="Node1" type="Marker3D" parent="MazePathFront"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37756634, 0, 0.041629553)
+
+[node name="EditorVisual-Node1-Junction12477910869" type="RayCast3D" parent="MazePathFront/Node1"]
+target_position = Vector3(-0.5492383, 0, -0.06958723)
+
+[node name="EditorVisual-Node1-Node23664920911" type="RayCast3D" parent="MazePathFront/Node1"]
+target_position = Vector3(1.7524309, 0, 0.6159171)
+
+[node name="EditorVisual-Node1-Door22242418832" type="RayCast3D" parent="MazePathFront/Node1"]
+target_position = Vector3(0.015915394, 0, 0.42737767)
+
+[node name="Node2" type="Marker3D" parent="MazePathFront"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3748646, 0, 0.65754664)
+
+[node name="EditorVisual-Node2-Node13871091609" type="RayCast3D" parent="MazePathFront/Node2"]
+target_position = Vector3(-1.7524309, 0, -0.6159171)
+
+[node name="Door2" type="Marker3D" parent="MazePathFront"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36165094, 0, 0.46900722)
+
+[node name="EditorVisual-Door2-Node12265709601" type="RayCast3D" parent="MazePathFront/Door2"]
+target_position = Vector3(-0.015915394, 0, -0.42737767)
+
+[node name="EditorVisual-Door2-Node31064617110" type="RayCast3D" parent="MazePathFront/Door2"]
+target_position = Vector3(0.68172026, 0, 0.6895865)
+
+[node name="Node3" type="Marker3D" parent="MazePathFront"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3200693, 0, 1.1585938)
+
+[node name="EditorVisual-Node3-Door23151401787" type="RayCast3D" parent="MazePathFront/Node3"]
+target_position = Vector3(-0.68172026, 0, -0.6895865)
+
+[node name="EditorVisual-Node3-NextScreen12216199307" type="RayCast3D" parent="MazePathFront/Node3"]
+target_position = Vector3(-0.3132162, 0, 1.5023826)
+
+[node name="NextScreen1" type="Marker3D" parent="MazePathFront"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0068531036, 0, 2.6609764)
+
+[node name="EditorVisual-NextScreen1-Node34082767624" type="RayCast3D" parent="MazePathFront/NextScreen1"]
+target_position = Vector3(0.3132162, 0, -1.5023826)
+
+[node name="NextScreen2" type="Marker3D" parent="MazePathFront"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017331004, 0, -2.5673523)
+
+[node name="EditorVisual-NextScreen2-NextScreen33337928864" type="RayCast3D" parent="MazePathFront/NextScreen2"]
+target_position = Vector3(1.8049716, 0, 1.8086991)
+
+[node name="NextScreen3" type="Marker3D" parent="MazePathFront"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8223026, 0, -0.75865316)
+
+[node name="EditorVisual-NextScreen3-NextScreen23450442827" type="RayCast3D" parent="MazePathFront/NextScreen3"]
+target_position = Vector3(-1.8049716, 0, -1.8086991)
+
+[node name="MazePathBack" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.12352359, 0)
+script = ExtResource("3_tqoff")
+connectionsAsStringArr = Array[String](["Node1-LEFT-Door1", "Door1-LEFT-Spinner1", "Spinner1-DOWN-Door2", "Door2-RIGHT-Finish"])
+
+[node name="Node1" type="Marker3D" parent="MazePathBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021856308, 0, -2.6737843)
+
+[node name="EditorVisual-Node1-Door11556174966" type="RayCast3D" parent="MazePathBack/Node1"]
+target_position = Vector3(-0.7066951, 0, 0.5099859)
+
+[node name="Door1" type="Marker3D" parent="MazePathBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7285514, 0, -2.1637983)
+
+[node name="EditorVisual-Door1-Node11248423726" type="RayCast3D" parent="MazePathBack/Door1"]
+target_position = Vector3(0.7066951, 0, -0.5099859)
+
+[node name="EditorVisual-Door1-Spinner1168335221" type="RayCast3D" parent="MazePathBack/Door1"]
+target_position = Vector3(-0.5099859, 0, 0.18942332)
+
+[node name="Spinner1" type="Marker3D" parent="MazePathBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2385373, 0, -1.974375)
+
+[node name="EditorVisual-Spinner1-Door1853561758" type="RayCast3D" parent="MazePathBack/Spinner1"]
+target_position = Vector3(0.5099859, 0, -0.18942332)
+
+[node name="EditorVisual-Spinner1-Door22321464208" type="RayCast3D" parent="MazePathBack/Spinner1"]
+target_position = Vector3(0.33513355, 0, 0.69940925)
+
+[node name="Door2" type="Marker3D" parent="MazePathBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.90340376, 0, -1.2749658)
+
+[node name="EditorVisual-Door2-Spinner12927328302" type="RayCast3D" parent="MazePathBack/Door2"]
+target_position = Vector3(-0.33513355, 0, -0.69940925)
+
+[node name="EditorVisual-Door2-Finish3354518906" type="RayCast3D" parent="MazePathBack/Door2"]
+target_position = Vector3(0.88883305, 0, 0.6484109)
+
+[node name="Finish" type="Marker3D" parent="MazePathBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014570713, 0, -0.62655485)
+
+[node name="EditorVisual-Finish-Door2317286308" type="RayCast3D" parent="MazePathBack/Finish"]
+target_position = Vector3(-0.88883305, 0, -0.6484109)
+
+[node name="CamVPos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.760635, 0)
+
+[node name="CamHPos" type="Marker3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 6.0319614, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.761, 0)
+
+[node name="CardRotPivot1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7509308)
+
+[node name="CardRotPivot2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.751)
+
+[node name="CardRotPivot3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9724569, 0, 0)
+
+[node name="CardRotPivot4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.972, 0, 0)
+
+[node name="RemoteCamOverview" type="RemoteTransform3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.761, 0)
+remote_path = NodePath("../DUMMY")
+update_rotation = false
+update_scale = false
+
+[node name="RemoteCamFollow" type="RemoteTransform3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1947942, 0.025179863)
+remote_path = NodePath("../DUMMY")
+update_rotation = false
+update_scale = false
+
+[node name="DUMMY" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.761, 0)
+
+[connection signal="currentNodeChanged" from="MazePathFront" to="." method="_on_maze_path_current_node_changed"]
+[connection signal="doAFlip" from="MazePathFront" to="." method="_on_maze_path_do_a_flip" binds= ["dir", "foriegnNodeName"]]
+[connection signal="currentNodeChanged" from="MazePathBack" to="." method="_on_maze_path_current_node_changed"]
+[connection signal="doAFlip" from="MazePathBack" to="." method="_on_maze_path_do_a_flip" binds= ["dir", "foriegnNodeName"]]

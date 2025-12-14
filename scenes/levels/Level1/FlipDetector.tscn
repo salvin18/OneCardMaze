@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7mrlq7j5f50d"]
+
+[ext_resource type="Script" uid="uid://cga1rybdvpxqk" path="res://scenes/levels/Level1/FlipDetector.gd" id="1_f2ety"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f2ety"]
+size = Vector3(0.46069336, 1, 0.0071289064)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p4bod"]
+size = Vector3(0.80566406, 1, 0.1559082)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7a0n"]
+size = Vector3(1.2, 1, 0.25439453)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f2ety"]
+size = Vector3(1, 1, 0.25)
+
+[sub_resource type="PrismMesh" id="PrismMesh_f2ety"]
+size = Vector3(0.6, 0.6, 0.2)
+
+[node name="FlipDetector" type="Node3D"]
+script = ExtResource("1_f2ety")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7327064, -0.12654841)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DoFlip" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoFlip"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.0035644565)
+shape = SubResource("BoxShape3D_f2ety")
+
+[node name="ShowPreview" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShowPreview"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.0779541)
+shape = SubResource("BoxShape3D_p4bod")
+
+[node name="HidePreview" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HidePreview" groups=["FlipDetectorGrp"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.12719727)
+shape = SubResource("BoxShape3D_i7a0n")
+
+[node name="DUMMY" type="Node3D" parent="."]
+
+[node name="Mesh1" type="MeshInstance3D" parent="DUMMY"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.13137805)
+mesh = SubResource("BoxMesh_f2ety")
+skeleton = NodePath("../..")
+
+[node name="Mesh2" type="MeshInstance3D" parent="DUMMY"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.65891695, -0.34413448)
+mesh = SubResource("PrismMesh_f2ety")
+skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="DoFlip" to="." method="_on_do_flip_body_entered"]
+[connection signal="body_entered" from="ShowPreview" to="." method="_on_show_preview_body_entered"]
+[connection signal="body_exited" from="HidePreview" to="." method="_on_hide_preview_body_exited"]

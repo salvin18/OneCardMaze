@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpr2vws216xuj"]
+
+[ext_resource type="Script" uid="uid://fvg6afm4gwm0" path="res://systems/MazeNode/MazeNode.gd" id="1_jygc0"]
+
+[node name="MazeNode" type="Marker3D"]
+script = ExtResource("1_jygc0")

@@ -1,0 +1,347 @@
+[gd_scene load_steps=18 format=3 uid="uid://dd1fpsaasge6f"]
+
+[ext_resource type="Script" uid="uid://b6caq2riprwsm" path="res://scenes/levels/Level1/Level1.gd" id="1_7w3lq"]
+[ext_resource type="PackedScene" uid="uid://kv1andoripbc" path="res://scenes/levels/Level1/Player.tscn" id="2_mtxap"]
+[ext_resource type="ArrayMesh" uid="uid://cbrmrha5aa5be" path="res://assets/Card1Mesh.res" id="2_tqoff"]
+[ext_resource type="PackedScene" uid="uid://8tjhncou27he" path="res://scenes/levels/Level1/CenterCard.tscn" id="3_tqoff"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqoff"]
+transparency = 1
+blend_mode = 3
+albedo_color = Color(0, 0, 0, 0.7764706)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mtxap"]
+material = SubResource("StandardMaterial3D_tqoff")
+size = Vector3(3.98, 0.06, 5.575)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p8gt5"]
+size = Vector3(0.85253906, 1, 5.53183)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqoff"]
+size = Vector3(3.930664, 1, 0.9222412)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mtxap"]
+size = Vector3(3.930664, 1, 0.9222412)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_c78c6"]
+margin = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqoff"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.28125, 0.28125, 0.28125, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 8
+border_width_bottom = 8
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="Animation" id="Animation_avroq"]
+resource_name = "FlipTop"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardRotater/CardDownPivot:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardRotater/CardDownPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.1241393, 0, 0), Vector3(-0.00038385577, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p8gt5"]
+resource_name = "FlipTop"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardRotater/CardLeftPivot:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardRotater/CardLeftPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 3.1415927), Vector3(-0.00038385577, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mtxap"]
+resource_name = "FlipTop"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardRotater/CardRightPivot:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardRotater/CardRightPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -3.1241393), Vector3(-0.00038385577, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_et5g2"]
+resource_name = "FlipTop"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardRotater/CardTopPivot:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardRotater/CardTopPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-3.1241393, 0, 0), Vector3(-0.00038385577, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tqoff"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardRotater/CardTopPivot:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardRotater/CardTopPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.1241393, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mtxap"]
+_data = {
+&"FlipDown": SubResource("Animation_avroq"),
+&"FlipLeft": SubResource("Animation_p8gt5"),
+&"FlipRight": SubResource("Animation_mtxap"),
+&"FlipTop": SubResource("Animation_et5g2"),
+&"RESET": SubResource("Animation_tqoff")
+}
+
+[node name="Level1" type="Node3D"]
+script = ExtResource("1_7w3lq")
+
+[node name="CardRotater" type="Node3D" parent="."]
+
+[node name="Player" parent="CardRotater" instance=ExtResource("2_mtxap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40567112, 1.4078933, -1.0232766)
+
+[node name="CenterCardRig" type="Node3D" parent="CardRotater"]
+
+[node name="CardFacingDir" type="Node3D" parent="CardRotater/CenterCardRig"]
+
+[node name="CenterCard" parent="CardRotater/CenterCardRig/CardFacingDir" instance=ExtResource("3_tqoff")]
+
+[node name="ProxyRig" type="Node3D" parent="CardRotater/CenterCardRig"]
+
+[node name="ProxyFacingDir" type="Node3D" parent="CardRotater/CenterCardRig/ProxyRig"]
+
+[node name="CardProxyMesh" type="MeshInstance3D" parent="CardRotater/CenterCardRig/ProxyRig/ProxyFacingDir"]
+mesh = ExtResource("2_tqoff")
+skeleton = NodePath("../../../../../..")
+
+[node name="CardTopPivot" type="Node3D" parent="CardRotater"]
+transform = Transform3D(1, 0, 0, 0, -0.9998477, 0.017452458, 0, -0.017452458, -0.9998477, 0, 0, -2.7596428)
+visible = false
+
+[node name="CardFacingDir" type="Node3D" parent="CardRotater/CardTopPivot"]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, -2.7661903)
+
+[node name="Card1Mesh" type="MeshInstance3D" parent="CardRotater/CardTopPivot/CardFacingDir"]
+mesh = ExtResource("2_tqoff")
+skeleton = NodePath("../../../../..")
+
+[node name="BlurBlackMesh" type="MeshInstance3D" parent="CardRotater/CardTopPivot/CardFacingDir"]
+mesh = SubResource("BoxMesh_mtxap")
+
+[node name="CardDownPivot" type="Node3D" parent="CardRotater"]
+transform = Transform3D(1, 0, 0, 0, -0.9998477, -0.017452458, 0, 0.017452458, -0.9998477, 0, 0, 2.7604709)
+visible = false
+
+[node name="CardFacingDir" type="Node3D" parent="CardRotater/CardDownPivot"]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 2.76619)
+
+[node name="Card1Mesh" type="MeshInstance3D" parent="CardRotater/CardDownPivot/CardFacingDir"]
+mesh = ExtResource("2_tqoff")
+skeleton = NodePath("../../../../..")
+
+[node name="BlurBlackMesh" type="MeshInstance3D" parent="CardRotater/CardDownPivot/CardFacingDir"]
+mesh = SubResource("BoxMesh_mtxap")
+
+[node name="CardRightPivot" type="Node3D" parent="CardRotater"]
+transform = Transform3D(-0.9998477, 0.017452458, 0, -0.017452458, -0.9998477, 0, 0, 0, 1, 1.9642961, 0, -0.005576849)
+visible = false
+
+[node name="CardFacingDir" type="Node3D" parent="CardRotater/CardRightPivot"]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 1.9701974, 0, 0.020185709)
+
+[node name="Card1Mesh" type="MeshInstance3D" parent="CardRotater/CardRightPivot/CardFacingDir"]
+mesh = ExtResource("2_tqoff")
+skeleton = NodePath("../../../../..")
+
+[node name="BlurBlackMesh" type="MeshInstance3D" parent="CardRotater/CardRightPivot/CardFacingDir"]
+mesh = SubResource("BoxMesh_mtxap")
+
+[node name="CardLeftPivot" type="Node3D" parent="CardRotater"]
+transform = Transform3D(-1, 1.509958e-07, 0, -1.509958e-07, -1, 0, 0, 0, 1, -1.9506748, 0, -0.005576849)
+visible = false
+
+[node name="CardFacingDir" type="Node3D" parent="CardRotater/CardLeftPivot"]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -1.9941423, 0, 0.020185709)
+
+[node name="Card1Mesh" type="MeshInstance3D" parent="CardRotater/CardLeftPivot/CardFacingDir"]
+mesh = ExtResource("2_tqoff")
+skeleton = NodePath("../../../../..")
+
+[node name="BlurBlackMesh" type="MeshInstance3D" parent="CardRotater/CardLeftPivot/CardFacingDir"]
+mesh = SubResource("BoxMesh_mtxap")
+
+[node name="Area_RIGHT" type="Area3D" parent="CardRotater" groups=["DetectionArea"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1234312, 0, 0.024411201)
+
+[node name="ForRight" type="CollisionShape3D" parent="CardRotater/Area_RIGHT"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67136717, 0.5098771, 0.048538208)
+shape = SubResource("BoxShape3D_p8gt5")
+
+[node name="Area_LEFT" type="Area3D" parent="CardRotater" groups=["DetectionArea"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9625797, 0, 0.024411201)
+
+[node name="ForLeft" type="CollisionShape3D" parent="CardRotater/Area_LEFT"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7310915, 0.5098771, 0.048538208)
+shape = SubResource("BoxShape3D_p8gt5")
+
+[node name="Area_TOP" type="Area3D" parent="CardRotater" groups=["DetectionArea"]]
+transform = Transform3D(1, 0, 0, 0, -0.9998477, 0.017452458, 0, -0.017452458, -0.9998477, 0, 0, -2.7596428)
+
+[node name="ForTop" type="CollisionShape3D" parent="CardRotater/Area_TOP"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48060912, 0.6564305)
+shape = SubResource("BoxShape3D_tqoff")
+
+[node name="Area_DOWN" type="Area3D" parent="CardRotater" groups=["DetectionArea"]]
+transform = Transform3D(1, 0, 0, 0, -0.9998477, 0.017452458, 0, -0.017452458, -0.9998477, 0, 0, 3.1658816)
+
+[node name="ForBottom" type="CollisionShape3D" parent="CardRotater/Area_DOWN"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4960207, -0.22649884)
+shape = SubResource("BoxShape3D_mtxap")
+
+[node name="WorldFlat" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldFlat"]
+shape = SubResource("WorldBoundaryShape3D_c78c6")
+
+[node name="LevelUI" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 90
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 90
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUI"]
+layout_mode = 2
+
+[node name="HintTextContainer" type="PanelContainer" parent="LevelUI/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tqoff")
+
+[node name="HintTextLabel" type="RichTextLabel" parent="LevelUI/VBoxContainer/HintTextContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Some text here....
+And here and here"
+fit_content = true
+
+[node name="flex" type="Control" parent="LevelUI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mtxap")
+}
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.53295016, 0.8461467, 0, -0.8461467, 0.53295016, 0, 4.733969, 3.2739534)
+
+[connection signal="doCardRotate" from="CardRotater/CenterCardRig/CardFacingDir/CenterCard" to="." method="_on_center_card_do_card_rotate"]
+[connection signal="doFlip" from="CardRotater/CenterCardRig/CardFacingDir/CenterCard" to="." method="_on_flip_detector_do_flip"]
+[connection signal="doorPassageNotAllowed" from="CardRotater/CenterCardRig/CardFacingDir/CenterCard" to="." method="_on_center_card_door_passage_not_allowed"]
+[connection signal="hidePreview" from="CardRotater/CenterCardRig/CardFacingDir/CenterCard" to="." method="_on_flip_detector_hide_preview"]
+[connection signal="hideText" from="CardRotater/CenterCardRig/CardFacingDir/CenterCard" to="." method="_on_center_card_hide_text"]
+[connection signal="showPreview" from="CardRotater/CenterCardRig/CardFacingDir/CenterCard" to="." method="_on_flip_detector_show_preview"]
+[connection signal="showText" from="CardRotater/CenterCardRig/CardFacingDir/CenterCard" to="." method="_on_center_card_show_text"]

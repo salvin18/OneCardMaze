@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://kv1andoripbc"]
+
+[ext_resource type="Script" uid="uid://hg66omhgtxtb" path="res://scenes/levels/Level1/character_body_3d.gd" id="1_oavmm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7w3lq"]
+margin = 0.001
+radius = 0.09
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tqoff"]
+top_radius = 0.1
+bottom_radius = 0.06
+height = 0.5
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oavmm"]
+noise_type = 2
+frequency = 0.0339
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w34t2"]
+noise = SubResource("FastNoiseLite_oavmm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8gt5"]
+albedo_color = Color(0.76171875, 0.3957367, 0.3957367, 1)
+roughness_texture = SubResource("NoiseTexture2D_w34t2")
+emission_enabled = true
+emission = Color(0.08886719, 0.33170798, 0.4375, 1)
+clearcoat = 0.83
+
+[sub_resource type="SphereMesh" id="SphereMesh_tqoff"]
+radius = 0.125
+height = 0.25
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_oavmm")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_7w3lq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26943946, 0)
+mesh = SubResource("CylinderMesh_tqoff")
+surface_material_override/0 = SubResource("StandardMaterial3D_p8gt5")
+
+[node name="HeadMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20976579, 0)
+mesh = SubResource("SphereMesh_tqoff")
+surface_material_override/0 = SubResource("StandardMaterial3D_p8gt5")

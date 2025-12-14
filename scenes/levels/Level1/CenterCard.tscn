@@ -1,0 +1,277 @@
+[gd_scene load_steps=18 format=3 uid="uid://8tjhncou27he"]
+
+[ext_resource type="ArrayMesh" uid="uid://cbrmrha5aa5be" path="res://assets/Card1Mesh.res" id="1_5uv2n"]
+[ext_resource type="Script" uid="uid://c44m8g13h58l4" path="res://scenes/levels/Level1/CenterCard.gd" id="1_omxen"]
+[ext_resource type="PackedScene" uid="uid://b7mrlq7j5f50d" path="res://scenes/levels/Level1/FlipDetector.tscn" id="2_omxen"]
+[ext_resource type="PackedScene" uid="uid://ddejrfibu8ofd" path="res://scenes/levels/Level1/Rotater.tscn" id="4_7mqmc"]
+[ext_resource type="PackedScene" uid="uid://pswjlu52l4f8" path="res://scenes/levels/Level1/Door.tscn" id="5_dmga4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_omxen"]
+height = 0.5
+radius = 0.6088867
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7mqmc"]
+height = 0.5
+radius = 0.3935547
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dmga4"]
+height = 0.5
+radius = 0.3935547
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ycjt6"]
+height = 0.5
+radius = 0.3935547
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_emc8h"]
+height = 0.5
+radius = 0.65185547
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dmga4"]
+size = Vector3(0.25756836, 0.907, 0.38)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lg8sd"]
+height = 0.5
+radius = 0.56396484
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nhako"]
+height = 0.5
+radius = 0.8095703
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ycjt6"]
+size = Vector3(0.23803711, 0.907, 0.37268066)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_emc8h"]
+size = Vector3(0.2209546, 0.907, 0.36541748)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lg8sd"]
+size = Vector3(0.2155835, 0.907, 0.36169434)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nhako"]
+size = Vector3(0.40247315, 0.907, 0.2265625)
+
+[node name="CenterCard" type="Node3D"]
+script = ExtResource("1_omxen")
+
+[node name="Card1Mesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_5uv2n")
+skeleton = NodePath("../../../../../..")
+
+[node name="FrontComponents" type="Node3D" parent="."]
+editor_description = "Components will be set to 0, 0, 0 in script during execution "
+
+[node name="FlipDetector1" parent="FrontComponents" groups=["FlipDetectorGrp"] instance=ExtResource("2_omxen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040688515, 0, -2.7598503)
+
+[node name="FlipDetector2" parent="FrontComponents" groups=["FlipDetectorGrp"] instance=ExtResource("2_omxen")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.9610269, 0, -0.79409146)
+
+[node name="FlipDetector3" parent="FrontComponents" groups=["FlipDetectorGrp"] instance=ExtResource("2_omxen")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.0408988, 0, 2.7547681)
+
+[node name="Collider1" type="StaticBody3D" parent="FrontComponents"]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="FrontComponents/Collider1"]
+transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, 0, 0.3295288, 0)
+polygon = PackedVector2Array(0.37173852, -2.745671, 0.4560645, -2.2359128, 0.20112033, -1.9622066, -0.13096307, -1.9891912, -0.25007007, -1.8828455, -0.43575707, -1.9000722, -0.6159468, -2.0305545, -0.92642784, -1.9551605, -1.1944188, -1.7977691, -1.3347949, -1.4574633, -1.236957, -1.0235734, -1.2908294, -0.7694618, -1.3390487, -0.41102296, -1.6027855, -0.27915442, -1.9519145, -0.40695193, -1.9749157, 0.093325704, -1.7559232, 0.12495876, -1.5262169, 0.13346636, -1.3433024, 0.027120832, -1.1135961, 0.048390035, -0.8158283, -0.074970834, -0.347908, 0.018613223, 0.039189834, -0.028178927, 0.36248043, -0.023925062, 1.0018369, -0.25852937, 1.1625631, -0.43885657, 1.2158338, -0.8756775, 1.0601071, -0.7172981, 0.9324926, -0.49609935, 0.6134559, -0.3812461, 0.37098816, -0.23661625, 0.06896664, -0.23236233, -0.18409584, -0.33960706, -0.50954795, -0.28466058, -0.78605175, -0.34296185, -1.1093422, -0.2876621, -1.020012, -0.76409024, -0.968966, -1.1724572, -1.1093422, -1.3426101, -0.9647124, -1.4914939, -0.76903653, -1.7212003, -0.5691068, -1.7212003, -0.3861923, -1.6531392, -0.08417104, -1.6786622, 0.06896664, -1.5808241, 0.7083193, -1.7007514, 0.92936325, -1.5304388, 1.2156333, -1.5123204, 1.4344436, -1.3766407, 1.4688704, -0.902313, 1.4662069, -0.4095576, 1.2470008, -0.12680805, 1.0796732, 0.053471748, 1.3536209, 0.20152748, 1.4386975, 0.3716805, 1.9514984, 0.12860313, 1.944748, -2.7605188)
+margin = 0.001
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="FrontComponents/Collider1"]
+transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, 0, 0.3295288, 0)
+polygon = PackedVector2Array(-0.38408455, -2.7502246, -0.33446798, -2.5418348, -0.45850953, -2.3284836, -0.830634, -2.293752, -1.0481892, -2.1705317, -1.3492224, -2.115135, -1.5107719, -1.9442652, -1.5500749, -1.4998863, -1.5897678, -1.2666882, -1.9519145, -1.0797391, -1.9569305, -2.7502246)
+margin = 0.001
+
+[node name="CollisionPolygon3D3" type="CollisionPolygon3D" parent="FrontComponents/Collider1"]
+transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, 0, 0.3295288, 0)
+polygon = PackedVector2Array(1.9811739, 0.15312678, 1.4313821, 0.20521224, 1.3850838, 0.41355437, 1.304062, 0.59874743, 1.3387855, 0.80130225, 1.3792964, 0.91126055, 1.5008293, 1.0906662, 1.5644895, 1.3395191, 1.5934259, 1.5710106, 1.5355533, 1.7562035, 1.5760642, 1.9645457, 1.5008293, 2.1497383, 1.3619348, 2.2133987, 1.1535927, 2.2944205, 0.92210144, 2.3233566, 0.6269502, 2.1960368, 0.5227789, 1.9356092, 0.2912881, 1.7735654, 0.13503118, 1.5999469, 0.0019237557, 1.4610522, 0.13503118, 1.148539, 0.42439553, 0.9170479, 0.7484829, 0.7376422, 0.9394633, 0.56981105, 1.0320598, 0.4019798, 0.9278888, 0.20521224, 0.78483146, 0.12120087, 0.4678342, 0.23954654, 0.5343537, 0.5350874, 0.39487657, 0.8243189, 0.11405977, 0.9410219, -0.10224728, 1.1832626, -0.20063095, 1.4205412, -0.22956733, 1.5999469, -0.09067254, 1.7851399, 0.27971336, 1.9761202, 0.40124628, 2.161313, 0.47069356, 2.7458284, 1.9406627, 2.7458284)
+margin = 0.001
+
+[node name="CollisionPolygon3D4" type="CollisionPolygon3D" parent="FrontComponents/Collider1"]
+transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, 0, 0.3295288, 0)
+polygon = PackedVector2Array(-1.5432805, 0.15312678, -1.9541768, 0.0026574184, -1.9483894, 2.7458284, -0.4610584, 2.7458284, -0.24692921, 2.5953593, -0.3876921, 2.3717294, -0.68676263, 2.329144, -1.0282124, 2.3349314, -1.338348, 2.3624094, -1.5664295, 2.3002076, -1.6011528, 1.871949, -1.5259184, 1.4321157, -1.5317057, 1.027006, -1.0946692, 0.87646765, -0.91246635, 1.0038569, -0.72177804, 0.87646765, -0.51314384, 0.9922824, -0.3345174, 1.0212553, -0.1193463, 0.82796586, 0.22563978, 0.6602672, 0.23409314, 0.23759837, 0.11151917, 0.31790537, 0.05979677, 0.5755983, -0.17169456, 0.7376422, -0.47263315, 0.8186641, -0.715699, 0.74921674, -0.9242047, 0.7885719, -1.0455741, 0.7376422, -1.3465127, 0.8186641, -1.5259184, 0.8244514)
+margin = 0.001
+
+[node name="HintText1" type="Area3D" parent="FrontComponents" groups=["HintText"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40511084, 0.3175894, -0.97226614)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontComponents/HintText1"]
+shape = SubResource("CylinderShape3D_omxen")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="FrontComponents/HintText1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7523489, 0, -0.04051107)
+shape = SubResource("CylinderShape3D_omxen")
+
+[node name="HintText2" type="Area3D" parent="FrontComponents" groups=["HintText"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61190844, 0.3175894, 0.42026788)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontComponents/HintText2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32122496, 0, -0.029586494)
+shape = SubResource("CylinderShape3D_7mqmc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="FrontComponents/HintText2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24515152, 0, -0.04896432)
+shape = SubResource("CylinderShape3D_dmga4")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="FrontComponents/HintText2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6762693, 0, -0.04896432)
+shape = SubResource("CylinderShape3D_ycjt6")
+
+[node name="HintText3" type="Area3D" parent="FrontComponents" groups=["HintText"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89371896, 0.3175894, 1.4240191)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontComponents/HintText3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023872077, 0, 0.029572845)
+shape = SubResource("CylinderShape3D_emc8h")
+
+[node name="HintText4" type="Area3D" parent="FrontComponents" groups=["HintText"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.88565874, 0.3175894, 1.6247694)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontComponents/HintText4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023872077, 0, 0.029572845)
+shape = SubResource("CylinderShape3D_emc8h")
+
+[node name="Rotater" parent="FrontComponents" instance=ExtResource("4_7mqmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0541899, 0.047930725, 2.0901299)
+
+[node name="Door" parent="FrontComponents" instance=ExtResource("5_dmga4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3472319, 0, -0.70236015)
+
+[node name="CollisionShape3D" parent="FrontComponents/Door" index="0"]
+shape = SubResource("BoxShape3D_dmga4")
+
+[node name="Door2" parent="FrontComponents" instance=ExtResource("5_dmga4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.39129108, 0, 0.44658768)
+
+[node name="CollisionShape3D" parent="FrontComponents/Door2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009306639, 0.42260742, 0)
+
+[node name="BackComponents" type="Node3D" parent="."]
+editor_description = "Components will be set to 0, 0, 0 in script during execution "
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0)
+
+[node name="FlipDetectorA" parent="BackComponents" groups=["FlipDetectorGrp"] instance=ExtResource("2_omxen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0423007, 0, -2.7461479)
+
+[node name="FlipDetectorA2" parent="BackComponents" groups=["FlipDetectorGrp"] instance=ExtResource("2_omxen")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.9688306, 0, -0.7474319)
+
+[node name="FlipDetectorA3" parent="BackComponents" groups=["FlipDetectorGrp"] instance=ExtResource("2_omxen")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.005056858, 0, 2.7410111)
+
+[node name="Collider2" type="StaticBody3D" parent="BackComponents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5189514, 0)
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="BackComponents/Collider2"]
+transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, 0, 0, 0)
+polygon = PackedVector2Array(-0.454978, -2.7314441, -0.5042777, -2.445507, -0.39088917, -2.2039397, -0.02114296, -1.9722321, 0.3979025, -2.0018117, 0.6986294, -2.0018117, 0.8731022, -1.9189744, 0.96323013, -1.7175214, 1.1328688, -1.6350164, 0.9444356, -1.475573, 0.63185215, -1.4213995, 0.45882702, -1.6927433, 0.28274775, -1.7588522, 0.033086777, -1.6123459, -0.3267994, -1.8292637, -0.66337776, -1.9008968, -0.9134636, -2.0067418, -1.1796808, -1.9278625, -1.1747503, -1.6468556, -1.1994004, -1.4003582, -1.4064579, -1.1834406, -1.4311075, -0.8087644, -1.312789, -0.6214265, -1.126389, -0.51042956, -0.9073391, -0.36178875, -1.0403337, -0.07233011, -0.57876444, -0.01756763, 0.007976055, -0.03321409, 0.219203, -0.20532465, 0.32090473, -0.5808384, 0.32090473, -0.79206514, 0.414783, -1.0345846, 0.6291723, -1.1132015, 1.1196175, -1.1595999, 1.6508498, -1.9498998, 1.4787388, -2.3410604, 1.0875788, -2.3488836, 0.7645769, -2.2669902, 0.5008383, -2.3410604, 0.50866175, -2.7478673, 1.9794245, -2.77916, 1.9716015, -1.2379881, 1.5569715, -1.2692809, 1.2831593, -1.0971705, 1.1501646, -0.76859534, 1.0954018, -0.3148495, 0.83460474, 0.068440996, 0.2824502, 0.28042886, -0.570941, 0.23277509, -1.0481572, 0.264068, -1.3376155, 0.40488565, -1.4314938, 0.5691733, -1.9556484, 0.57699627, -1.9243565, -2.7556903)
+margin = 0.001
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="BackComponents/Collider2"]
+transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, 0, 0, 0)
+polygon = PackedVector2Array(1.9925184, -0.3867949, 1.5622416, -0.31638584, 1.2571363, 0.12953724, 0.7408047, 0.39552644, 0.3574667, 0.48158178, -0.21362734, 0.55981386, -0.8003683, 0.5519906, -1.0976505, 0.5676371, -1.0584965, 0.9114624, -1.0782166, 1.458687, -0.8267889, 1.8333634, -0.47183228, 1.8037835, -0.47961664, 1.3264886, -0.51873255, 0.85709596, -0.2214508, 0.7006316, 0.2792349, 0.7006316, 0.52175426, 0.7632173, 0.59998655, 1.2169638, 0.5061083, 1.7254725, 0.45134544, 2.1244564, 0.44352245, 2.703374, 1.9690485, 2.7424903)
+margin = 0.001
+
+[node name="CollisionPolygon3D3" type="CollisionPolygon3D" parent="BackComponents/Collider2"]
+transform = Transform3D(-1, -3.821371e-15, -8.742278e-08, -8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, 0, 0, 0)
+polygon = PackedVector2Array(-1.4340487, 0.63022274, -1.9347343, 0.6145763, -1.9894962, 2.7816062, -0.4170308, 2.7424903, -0.39356136, 2.3826222, -0.47961664, 2.1870418, -0.8394842, 2.1870418, -1.113297, 2.3826222, -1.3558164, 2.3669758, -1.5592194, 2.1635723, -1.5905132, 1.8349975, -1.5465622, 1.5868658, -1.4233131, 1.4192474, -1.4183826, 1.0495011, -1.4479623, 0.8769528)
+margin = 0.001
+
+[node name="HintText5" type="Area3D" parent="BackComponents" groups=["HintText"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010112762, 0, 1.4301529)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackComponents/HintText5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023871899, 0, 0.029572845)
+shape = SubResource("CylinderShape3D_lg8sd")
+
+[node name="HintText6" type="Area3D" parent="BackComponents" groups=["HintText"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4381566, 0, -1.0428528)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackComponents/HintText6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023871899, 0, 0.029572845)
+shape = SubResource("CylinderShape3D_nhako")
+
+[node name="Rotater2" parent="BackComponents" instance=ExtResource("4_7mqmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2261038, 0.047930725, -1.9576852)
+
+[node name="Rotater3" parent="BackComponents" instance=ExtResource("4_7mqmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1808829, 0.047930725, 2.0074759)
+
+[node name="Door3" parent="BackComponents" instance=ExtResource("5_dmga4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9273143, 0, -1.3033304)
+
+[node name="CollisionShape3D" parent="BackComponents/Door3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42260742, 0.0037231445)
+shape = SubResource("BoxShape3D_ycjt6")
+
+[node name="Door4" parent="BackComponents" instance=ExtResource("5_dmga4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.7304959, 0, -2.084484)
+
+[node name="CollisionShape3D" parent="BackComponents/Door4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012540817, 0.42260742, 0.029083252)
+shape = SubResource("BoxShape3D_emc8h")
+
+[node name="Door5" parent="BackComponents" instance=ExtResource("5_dmga4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2366643, 0, 1.2200766)
+
+[node name="CollisionShape3D" parent="BackComponents/Door5" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0052523613, 0.42260742, -0.0012817383)
+shape = SubResource("BoxShape3D_lg8sd")
+
+[node name="Door6" parent="BackComponents" instance=ExtResource("5_dmga4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.6617832, 0, 2.0230854)
+
+[node name="CollisionShape3D" parent="BackComponents/Door6" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024478912, 0.42260742, -0.018066406)
+shape = SubResource("BoxShape3D_nhako")
+
+[node name="DUMMY" parent="BackComponents/Door6" index="2"]
+visible = false
+
+[node name="DUMMY" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0)
+
+[node name="Card1Mesh" type="MeshInstance3D" parent="DUMMY"]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_5uv2n")
+skeleton = NodePath("../../../../../../..")
+metadata/_edit_lock_ = true
+
+[connection signal="doFlip" from="FrontComponents/FlipDetector1" to="." method="_on_flip_detector_do_flip"]
+[connection signal="hidePreview" from="FrontComponents/FlipDetector1" to="." method="_on_flip_detector_hide_preview"]
+[connection signal="showPreview" from="FrontComponents/FlipDetector1" to="." method="_on_flip_detector_show_preview"]
+[connection signal="doFlip" from="FrontComponents/FlipDetector2" to="." method="_on_flip_detector_do_flip"]
+[connection signal="hidePreview" from="FrontComponents/FlipDetector2" to="." method="_on_flip_detector_hide_preview"]
+[connection signal="showPreview" from="FrontComponents/FlipDetector2" to="." method="_on_flip_detector_show_preview"]
+[connection signal="doFlip" from="FrontComponents/FlipDetector3" to="." method="_on_flip_detector_do_flip"]
+[connection signal="hidePreview" from="FrontComponents/FlipDetector3" to="." method="_on_flip_detector_hide_preview"]
+[connection signal="showPreview" from="FrontComponents/FlipDetector3" to="." method="_on_flip_detector_show_preview"]
+[connection signal="body_entered" from="FrontComponents/HintText1" to="." method="_on_area_text_body_entered" binds= ["StartText"]]
+[connection signal="body_exited" from="FrontComponents/HintText1" to="." method="_on_area_text_body_exited"]
+[connection signal="body_entered" from="FrontComponents/HintText2" to="." method="_on_area_text_body_entered" binds= ["Step2Text"]]
+[connection signal="body_exited" from="FrontComponents/HintText2" to="." method="_on_area_text_body_exited"]
+[connection signal="body_entered" from="FrontComponents/HintText3" to="." method="_on_area_text_body_entered" binds= ["Step3Text"]]
+[connection signal="body_exited" from="FrontComponents/HintText3" to="." method="_on_area_text_body_exited"]
+[connection signal="body_entered" from="FrontComponents/HintText4" to="." method="_on_area_text_body_entered" binds= ["Step4Text"]]
+[connection signal="body_exited" from="FrontComponents/HintText4" to="." method="_on_area_text_body_exited"]
+[connection signal="doCardRotate" from="FrontComponents/Rotater" to="." method="_on_rotater_do_card_rotate"]
+[connection signal="doFlip" from="BackComponents/FlipDetectorA" to="." method="_on_flip_detector_do_flip"]
+[connection signal="hidePreview" from="BackComponents/FlipDetectorA" to="." method="_on_flip_detector_hide_preview"]
+[connection signal="showPreview" from="BackComponents/FlipDetectorA" to="." method="_on_flip_detector_show_preview"]
+[connection signal="doFlip" from="BackComponents/FlipDetectorA2" to="." method="_on_flip_detector_do_flip"]
+[connection signal="hidePreview" from="BackComponents/FlipDetectorA2" to="." method="_on_flip_detector_hide_preview"]
+[connection signal="showPreview" from="BackComponents/FlipDetectorA2" to="." method="_on_flip_detector_show_preview"]
+[connection signal="doFlip" from="BackComponents/FlipDetectorA3" to="." method="_on_flip_detector_do_flip"]
+[connection signal="hidePreview" from="BackComponents/FlipDetectorA3" to="." method="_on_flip_detector_hide_preview"]
+[connection signal="showPreview" from="BackComponents/FlipDetectorA3" to="." method="_on_flip_detector_show_preview"]
+[connection signal="body_entered" from="BackComponents/HintText5" to="." method="_on_area_text_body_entered" binds= ["BackText1"]]
+[connection signal="body_exited" from="BackComponents/HintText5" to="." method="_on_area_text_body_exited"]
+[connection signal="body_entered" from="BackComponents/HintText6" to="." method="_on_area_text_body_entered" binds= ["ExitText1"]]
+[connection signal="body_exited" from="BackComponents/HintText6" to="." method="_on_area_text_body_exited"]
+[connection signal="doCardRotate" from="BackComponents/Rotater2" to="." method="_on_rotater_do_card_rotate"]
+[connection signal="doCardRotate" from="BackComponents/Rotater3" to="." method="_on_rotater_do_card_rotate"]
+
+[editable path="FrontComponents/Door"]
+[editable path="FrontComponents/Door2"]
+[editable path="BackComponents/Door3"]
+[editable path="BackComponents/Door4"]
+[editable path="BackComponents/Door5"]
+[editable path="BackComponents/Door6"]

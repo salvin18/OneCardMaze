@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://biqijis8peqxr"]
+
+[ext_resource type="Script" uid="uid://duogda5ny6i6b" path="res://scenes/UI/MoveUI/MoveUI.gd" id="1_7v8a2"]
+
+[node name="MoveUI" type="GridContainer"]
+size_flags_horizontal = 8
+size_flags_vertical = 8
+columns = 3
+script = ExtResource("1_7v8a2")
+
+[node name="R-LeftBtn" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 1
+theme_override_font_sizes/font_size = 60
+text = "R-Left"
+
+[node name="UpBtn" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 1
+theme_override_font_sizes/font_size = 60
+text = "Up"
+
+[node name="R-RightBtn" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 1
+theme_override_font_sizes/font_size = 60
+text = "R-Right"
+
+[node name="LeftBtn" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 1
+theme_override_font_sizes/font_size = 60
+text = "Left"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[node name="RightBtn" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 1
+theme_override_font_sizes/font_size = 60
+text = "Right"
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 2
+
+[node name="DownBtn" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 1
+theme_override_font_sizes/font_size = 60
+text = "Down"
+
+[node name="Control3" type="Control" parent="."]
+layout_mode = 2
+
+[connection signal="pressed" from="R-LeftBtn" to="." method="emitSignalForButton" binds= ["rotateLeft"]]
+[connection signal="pressed" from="UpBtn" to="." method="emitSignalForButton" binds= ["moveTop"]]
+[connection signal="pressed" from="R-RightBtn" to="." method="emitSignalForButton" binds= ["rotateRight"]]
+[connection signal="pressed" from="LeftBtn" to="." method="emitSignalForButton" binds= ["moveLeft"]]
+[connection signal="pressed" from="RightBtn" to="." method="emitSignalForButton" binds= ["moveRight"]]
+[connection signal="pressed" from="DownBtn" to="." method="emitSignalForButton" binds= ["moveDown"]]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddejrfibu8ofd"]
+
+[ext_resource type="Script" uid="uid://cy14qv734rlrv" path="res://scenes/levels/Level1/Rotater.gd" id="1_q0tv4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_omxen"]
+radius = 0.012546748
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q0tv4"]
+radius = 0.020987332
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_53ou2"]
+radius = 0.047905833
+
+[node name="Rotater" type="Node3D"]
+script = ExtResource("1_q0tv4")
+
+[node name="RotaterArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RotaterArea"]
+shape = SubResource("SphereShape3D_omxen")
+
+[node name="InnerArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InnerArea"]
+shape = SubResource("SphereShape3D_q0tv4")
+
+[node name="OuterArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OuterArea"]
+shape = SubResource("SphereShape3D_53ou2")
+
+[connection signal="body_entered" from="RotaterArea" to="." method="_on_rotater_area_body_entered"]
+[connection signal="body_exited" from="RotaterArea" to="." method="_on_rotater_area_body_exited"]
+[connection signal="body_exited" from="InnerArea" to="." method="_on_inner_area_body_exited"]
+[connection signal="body_entered" from="OuterArea" to="." method="_on_outer_area_body_entered"]
+[connection signal="body_exited" from="OuterArea" to="." method="_on_outer_area_body_exited"]
